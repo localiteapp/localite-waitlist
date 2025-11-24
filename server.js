@@ -29,7 +29,9 @@ const Subscriber = mongoose.model('Subscriber', subscriberSchema);
 
 // --- 3. Email Configuration ---
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // This forces SSL, which prevents timeouts
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
