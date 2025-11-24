@@ -297,7 +297,7 @@ button:hover { transform: scale(1.02); }
     }
     
     .logo img {
-        height: 140px; /* Smaller logo for mobile */
+        height: 200px; /* Smaller logo for mobile */
         top: -10px;
     }
     
