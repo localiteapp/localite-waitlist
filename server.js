@@ -54,11 +54,17 @@ app.post('/join-waitlist', async (req, res) => {
 
         // B. Send Email
         const mailOptions = {
-            // Replace 'your-real-email@gmail.com' with the email you verified in Brevo
+            // ⚠️ This email MUST be the one you just verified in Brevo
             from: `"Localite Team" <hi.localite@gmail.com>`, 
             to: email,
             subject: 'Welcome to Localite!',
-            // ... rest of the code
+            html: `
+                <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+                    <h1 style="color: #56684E;">You are on the list!</h1>
+                    <p>Thanks for joining <strong>Localite</strong>.</p>
+                    <p>We will notify you as soon as we launch.</p>
+                </div>
+            `
         };
 
         await transporter.sendMail(mailOptions);
