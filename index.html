@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localite - Waitlist</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script> 
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Localite Logo"> 
+        </div>
+        <a href="https://www.instagram.com/localiteapp?igsh=MTg3cjZjeWJnemh4Nw%3D%3D" target="_blank" class="insta-link">
+            <div class="insta-circle">
+                <i data-lucide="instagram" color="white" width="22"></i>
+            </div>
+        </a>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="headline" id="magic-headline">Your Next Hangout?<br>Just a <span class="italic-script">swipe away!</span></h1>
+            
+            <p class="subheadline">Become the Localite who knows where to go.<br>Find the <strong>right place</strong>, every time.</p>
+            
+            <form id="waitlistForm" class="email-form">
+                <input type="email" id="email" placeholder="name@email.com" required>
+                <button type="submit">Join Wait List</button>
+            </form>
+            <p id="message" class="hidden"></p>
+        </div>
+    </main>
+
+    <section class="carousel-container">
+        <div class="carousel-track" id="track">
+            </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

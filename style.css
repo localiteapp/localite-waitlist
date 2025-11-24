@@ -1,0 +1,286 @@
+/* --- 1. Load Downloaded Fonts --- */
+@font-face {
+    font-family: 'InstrumentSerif';
+    src: url('assets/InstrumentSerif-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('assets/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500; 
+    font-style: normal;
+}
+
+/* --- 2. Variables --- */
+:root {
+    --bg-cream: #f3e596; 
+    --bar-green: #56684E;
+    --card-dark: #56684E;
+    --card-light: #B9D8A6;
+    --text-dark: #1a1a1a;
+    --accent-orange: #FF6B35;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-cream);
+    font-family: 'Manrope', sans-serif; 
+    overflow-x: hidden; 
+}
+
+/* --- 3. Header --- */
+.top-bar {
+    background-color: var(--bar-green);
+    height: 90px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    position: relative; 
+    z-index: 10;
+}
+
+.logo img { 
+    height: 200px; 
+    width: auto;
+    display: block;
+    object-fit: contain;
+    position: relative; 
+    top: -10px; 
+}
+
+.insta-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.insta-circle:hover { background: rgba(255,255,255,0.2); }
+
+/* --- 4. Hero & Typography --- */
+.hero {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    width: 100%;
+    display: flex;       
+    justify-content: center; 
+}
+
+.hero-content {
+    display: flex;       
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.headline {
+    font-family: 'InstrumentSerif', serif; 
+    font-size: 4rem; 
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 25px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.italic-script {
+    font-style: italic;
+    opacity: 1;
+    color: var(--bar-green); 
+}
+
+.subheadline {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #333; 
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* --- 5. Magic Text Animation --- */
+@keyframes magicFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.5); 
+        filter: blur(10px);    
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.magic-letter {
+    display: inline-block;
+    opacity: 0; 
+    animation: magicFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.space-char {
+    display: inline-block;
+    width: 0.3em;
+}
+
+/* --- 6. Form --- */
+.email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+input[type="email"] {
+    width: 100%;
+    max-width: 420px; 
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #B9D8A6; 
+    color: var(--bar-green);
+    font-size: 1rem;
+    outline: none;
+    font-family: 'Manrope', sans-serif; 
+    font-weight: 500;
+    text-align: center; 
+}
+input[type="email"]::placeholder { color: rgba(255,255,255, 0.9); }
+
+button {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--bar-green);
+    color: white;
+    font-family: 'Manrope', sans-serif; 
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+button:hover { transform: scale(1.02); }
+
+.hidden { display: none; }
+#message { margin-top: 15px; font-weight: bold; color: var(--bar-green); font-family: 'Manrope', sans-serif; }
+
+/* --- 7. Carousel --- */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0; 
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px; 
+    width: max-content;
+    align-items: center; 
+    animation: scrollLeft 40s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* --- 8. Cards (THIN & LONG UPDATE) --- */
+.card {
+    position: relative;
+    border-radius: 20px;
+    padding: 12px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    
+    /* NARROW WIDTH: Makes them look thin */
+    width: 260px; 
+}
+
+.card.large {
+    /* TALLER HEIGHT: Makes them look long */
+    height: 420px; 
+    background-color: var(--card-dark);
+    color: #fff;
+}
+
+.card.small {
+    /* PROPORTIONAL HEIGHT */
+    height: 350px; 
+    background-color: var(--card-light);
+    color: var(--text-dark);
+}
+
+.card-img {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    /* Image takes up more vertical space now */
+    height: 78%; 
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ccc; 
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.pill-icon {
+    background: white;
+    border-radius: 50px;
+    width: 36px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.orange-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-orange);
+    border-radius: 50%;
+}
+
+.card-text {
+    font-family: 'Manrope', sans-serif; 
+    font-size: 1.05rem; /* Adjusted slightly for narrower card */
+    font-weight: 500;
+    white-space: nowrap; /* Prevents wrapping on thin cards */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
