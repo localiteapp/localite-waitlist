@@ -44,12 +44,12 @@ body {
 }
 
 .logo img { 
-    height: 180px; 
+    height: 190px; 
     width: auto;
     display: block;
     object-fit: contain;
     position: relative; 
-    top: 10px; 
+    top: -10px; 
     max-width: 100%; /* Prevents logo from forcing screen wide */
 }
 
