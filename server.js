@@ -29,9 +29,9 @@ const Subscriber = mongoose.model('Subscriber', subscriberSchema);
 
 // --- 3. Email Configuration ---
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // This forces SSL, which prevents timeouts
+    host: 'smtp-relay.brevo.com', // Brevo's Server
+    port: 2525,                    // The Magic Port (Works on Render)
+    secure: false,                 // Must be false for port 2525
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
