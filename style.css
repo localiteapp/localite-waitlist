@@ -44,12 +44,13 @@ body {
 }
 
 .logo img { 
-    height: 200px; 
+    height: 180px; 
     width: auto;
     display: block;
     object-fit: contain;
     position: relative; 
-    top: -10px; 
+    top: 10px; 
+    max-width: 100%; /* Prevents logo from forcing screen wide */
 }
 
 .insta-circle {
@@ -62,6 +63,7 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: 0.3s;
+    flex-shrink: 0; /* Prevents icon from getting squished */
 }
 .insta-circle:hover { background: rgba(255,255,255,0.2); }
 
@@ -81,6 +83,7 @@ body {
     text-align: center;
     width: 100%;
     max-width: 900px;
+    padding: 0 20px; /* Adds safety padding on sides */
 }
 
 .headline {
@@ -201,7 +204,7 @@ button:hover { transform: scale(1.02); }
     100% { transform: translateX(-50%); } 
 }
 
-/* --- 8. Cards (THIN & LONG UPDATE) --- */
+/* --- 8. Cards --- */
 .card {
     position: relative;
     border-radius: 20px;
@@ -213,19 +216,17 @@ button:hover { transform: scale(1.02); }
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     border: 1px solid rgba(255,255,255,0.4);
     
-    /* NARROW WIDTH: Makes them look thin */
+    /* Base sizes (Desktop) */
     width: 260px; 
 }
 
 .card.large {
-    /* TALLER HEIGHT: Makes them look long */
     height: 420px; 
     background-color: var(--card-dark);
     color: #fff;
 }
 
 .card.small {
-    /* PROPORTIONAL HEIGHT */
     height: 350px; 
     background-color: var(--card-light);
     color: var(--text-dark);
@@ -236,7 +237,6 @@ button:hover { transform: scale(1.02); }
     top: 12px;
     left: 12px;
     right: 12px;
-    /* Image takes up more vertical space now */
     height: 78%; 
     border-radius: 16px;
     overflow: hidden;
@@ -278,9 +278,56 @@ button:hover { transform: scale(1.02); }
 
 .card-text {
     font-family: 'Manrope', sans-serif; 
-    font-size: 1.05rem; /* Adjusted slightly for narrower card */
+    font-size: 1.05rem;
     font-weight: 500;
-    white-space: nowrap; /* Prevents wrapping on thin cards */
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* ========================================= */
+/* MOBILE RESPONSIVE FIXES             */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Header: Shrink bar and logo */
+    .top-bar {
+        height: 70px; /* Smaller bar */
+        padding: 0 20px;
+    }
+    
+    .logo img {
+        height: 100px; /* Smaller logo for mobile */
+        top: 5px;
+    }
+    
+    .insta-circle {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* 2. Hero Text: Shrink big text */
+    .hero {
+        padding-top: 40px;
+    }
+
+    .headline {
+        font-size: 2.8rem; /* Much smaller than 4rem */
+        line-height: 1.2;
+    }
+
+    .subheadline {
+        font-size: 1rem;
+    }
+
+    /* 3. Cards: Make them slightly smaller on mobile */
+    .card {
+        width: 220px; /* Thinner */
+    }
+    .card.large {
+        height: 350px; /* Shorter */
+    }
+    .card.small {
+        height: 280px; /* Shorter */
+    }
 }
