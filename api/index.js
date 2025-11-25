@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 
 // 1. Database Connection (Cached for speed)
 let isConnected = false;
-
 async function connectToDatabase() {
     if (isConnected) return;
     try {
@@ -22,61 +21,61 @@ const subscriberSchema = new mongoose.Schema({
     email: { type: String, required: true },
     joinedAt: { type: Date, default: Date.now }
 });
-
-// Prevent "OverwriteModelError" in serverless
 const Subscriber = mongoose.models.Subscriber || mongoose.model('Subscriber', subscriberSchema);
 
-// 3. Email Transporter (Using Brevo/Gmail settings)
+// 3. Email Transporter (DIRECT GMAIL STRATEGY)
+// We use Port 465 (SSL) which is faster and more secure for Gmail
 const transporter = nodemailer.createTransport({
-    host: 'smtp-relay.brevo.com',
-    port: 587,
-    secure: false,
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // TRUE for 465
     auth: {
-        user: process.env.EMAIL_USER, // Your Brevo Login ID
-        pass: process.env.EMAIL_PASS  // Your Brevo API Key
+        user: process.env.EMAIL_USER, // hi.localite@gmail.com
+        pass: process.env.EMAIL_PASS  // Google App Password
     }
 });
 
-// 4. The Main Function (Runs when user clicks Join)
 module.exports = async (req, res) => {
-    // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).send({ message: 'Only POST requests allowed' });
     }
 
     const { email } = req.body;
-
-    if (!email) {
-        return res.status(400).json({ message: "Email is required" });
-    }
+    if (!email) return res.status(400).json({ message: "Email is required" });
 
     try {
-        await connectToDatabase();
+        // Run DB connection and Email sending in PARALLEL to save time
+        // This is the trick to beat the 10-second limit
+        const dbPromise = connectToDatabase().then(() => {
+            const newSub = new Subscriber({ email });
+            return newSub.save();
+        });
 
-        // Save to DB
-        const newSub = new Subscriber({ email });
-        await newSub.save();
-
-        // Send Email
-        await transporter.sendMail({
-            from: `"Localite Team" <hi.localite@gmail.com>`, // Your Verified Sender
+        const emailPromise = transporter.sendMail({
+            from: `"Localite Team" <${process.env.EMAIL_USER}>`,
             to: email,
             subject: 'Welcome to Localite!',
             html: `
-                <div style="font-family: sans-serif; padding: 20px; background-color: #f3e596; color: #1a1a1a; text-align: center;">
-                    <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/localite-waitlist/main/assets/logo.png" width="150" style="margin-bottom:20px;">
-                    <div style="background: white; padding: 30px; border-radius: 10px;">
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f3e596; border-radius: 10px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/localite-waitlist/main/assets/logo.png" width="150">
+                    </div>
+                    <div style="background: white; padding: 30px; border-radius: 10px; text-align: center;">
                         <h1 style="color: #56684E;">You're on the list!</h1>
-                        <p>Thanks for joining Localite.</p>
+                        <p style="color: #444;">Thanks for joining Localite.</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 20px;">The Localite Team</p>
                     </div>
                 </div>
             `
         });
 
-        res.status(200).json({ message: "Success" });
+        // Wait for both to finish
+        await Promise.all([dbPromise, emailPromise]);
+
+        return res.status(200).json({ message: "Success" });
 
     } catch (error) {
-        console.error("Server Error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
+        console.error("Error:", error);
+        return res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
