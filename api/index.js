@@ -56,16 +56,71 @@ module.exports = async (req, res) => {
             to: email,
             subject: 'Welcome to Localite!',
             html: `
-                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f3e596; border-radius: 10px;">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/localite-waitlist/main/assets/logo.png" width="150">
-                    </div>
-                    <div style="background: white; padding: 30px; border-radius: 10px; text-align: center;">
-                        <h1 style="color: #56684E;">You're on the list!</h1>
-                        <p style="color: #444;">Thanks for joining Localite.</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 20px;">The Localite Team</p>
-                    </div>
-                </div>
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+                /* Mobile Responsive Rules */
+                @media only screen and (max-width: 600px) {
+                    .container { width: 100% !important; }
+                    .nav-link { display: block !important; padding: 10px !important; }
+                }
+            </style>
+            </head>
+            <body style="margin:0; padding:0; background-color:#F0F4F8; font-family: sans-serif;">
+
+                <table role="presentation" class="container" width="600" align="center" border="0" cellpadding="0" cellspacing="0" style="background-color:#ffffff; margin: 0 auto;">
+                    
+                    <tr>
+                        <td align="center" style="padding: 0;">
+                            <a href="https://localiteapp.in">
+                                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USER/localite-waitlist/main/assets/header.png" alt="Welcome to Localite" width="600" style="width: 100%; max-width: 600px; display: block; height: auto; border: 0;">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="background-color: #EBF3F5; padding: 15px;">
+                            <a href="https://instagram.com/yourhandle" style="text-decoration: none; color: #56684E; font-size: 12px; margin: 0 10px; font-weight: bold;">INSTAGRAM</a>
+                            <a href="#" style="text-decoration: none; color: #56684E; font-size: 12px; margin: 0 10px; font-weight: bold;">WHATSAPP</a>
+                            <a href="#" style="text-decoration: none; color: #56684E; font-size: 12px; margin: 0 10px; font-weight: bold;">LINKEDIN</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="padding: 30px 40px; background-color: #EBF3F5; color: #333;">
+                            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                                Thank you for joining us early.<br>
+                                From familiar cafés to the latest brunch places, you'll always know where to go.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="padding: 0; background-color: #EBF3F5;">
+                            <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USER/localite-waitlist/main/assets/grid.png" alt="Brunch, Bakery, Court, Bowling" width="600" style="width: 100%; max-width: 600px; display: block; height: auto;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="padding: 0;">
+                            <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USER/localite-waitlist/main/assets/footer.png" alt="Coming Soon" width="600" style="width: 100%; max-width: 600px; display: block; height: auto;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="padding: 20px; background-color: #EBF3F5; font-size: 11px; color: #888;">
+                            <p style="margin: 0;">If you no longer wish to receive these emails, you can</p>
+                            <a href="https://localiteapp.in/api/unsubscribe?email=${email}" style="color: #56684E; text-decoration: underline;">Unsubscribe</a>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </body>
+            </html>
             `
         });
 
