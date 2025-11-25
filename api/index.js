@@ -133,11 +133,11 @@ module.exports = async (req, res) => {
                         </td>
                     </tr>
                     
-                    <!-- 3. UNSUBSCRIBE FOOTER -->
+                    <!-- 3. UNSUBSCRIBE FOOTER (Also Green background to match) -->
                     <tr>
-                        <td align="center" style="padding: 15px 20px 30px 20px; font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #888; background-color: #ffffff;">
+                        <td align="center" style="padding: 10px 20px 30px 20px; font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #555; background-color: #bef5cb;">
                             <p style="margin: 0 0 5px 0;">If you no longer wish to receive these emails you can</p>
-                            <a href="https://localiteapp.in/api/unsubscribe?email=${email}" style="color: #56684E; text-decoration: underline;">Unsubscribe</a>
+                            <a href="https://localiteapp.in/api/unsubscribe?email=${email}" style="color: #333; text-decoration: underline;">Unsubscribe</a>
                         </td>
                     </tr>
                 </table>
