@@ -97,7 +97,7 @@ form.addEventListener('submit', async (e) => {
     btn.disabled = true;
 
     try {
-        const response = await fetch('/join-waitlist', {
+        const response = await fetch('/api', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
