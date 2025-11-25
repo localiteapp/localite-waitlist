@@ -83,7 +83,6 @@ module.exports = async (req, res) => {
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; margin: 0 auto;">
                     
                     <!-- 1. THE MAIN DESIGN IMAGE -->
-                    <!-- Replace 'localiteapp' with your actual GitHub username if different -->
                     <tr>
                         <td align="center" style="padding: 0;">
                             <img src="https://raw.githubusercontent.com/localiteapp/localite-waitlist/main/assets/newsletter-full.jpg" 
@@ -93,39 +92,40 @@ module.exports = async (req, res) => {
                         </td>
                     </tr>
 
-                    <!-- 2. SOCIAL MEDIA ICONS ROW -->
+                    <!-- 2. SOCIAL MEDIA ICONS ROW (With Pista Green Background) -->
                     <tr>
-                        <td align="center" style="padding: 20px 0 10px 0; background-color: #ffffff;">
+                        <!-- CHANGED: background-color: #bef5cb (Pista Green) -->
+                        <td align="center" style="padding: 15px 0 10px 0; background-color: #bef5cb;">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <!-- Instagram -->
-                                    <td style="padding: 0 10px;">
+                                    <td style="padding: 0 15px;">
                                         <a href="https://www.instagram.com/localiteapp/" target="_blank">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="32" height="32" alt="Instagram" style="display:block;">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="28" height="28" alt="Instagram" style="display:block;">
                                         </a>
                                     </td>
                                     <!-- WhatsApp -->
-                                    <td style="padding: 0 10px;">
+                                    <td style="padding: 0 15px;">
                                         <a href="https://whatsapp.com/channel/0029VbBkHpiISTkOP5cOcH2u" target="_blank">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="32" height="32" alt="WhatsApp" style="display:block;">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="28" height="28" alt="WhatsApp" style="display:block;">
                                         </a>
                                     </td>
                                     <!-- Gmail -->
-                                    <td style="padding: 0 10px;">
+                                    <td style="padding: 0 15px;">
                                         <a href="mailto:hi.localite@gmail.com" target="_blank">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="32" height="32" alt="Gmail" style="display:block;">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="28" height="28" alt="Gmail" style="display:block;">
                                         </a>
                                     </td>
                                     <!-- Reddit -->
-                                    <td style="padding: 0 10px;">
+                                    <td style="padding: 0 15px;">
                                         <a href="https://www.reddit.com/u/localite_app/" target="_blank">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111589.png" width="32" height="32" alt="Reddit" style="display:block;">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/52/52053.png" width="28" height="28" alt="Reddit" style="display:block;">
                                         </a>
                                     </td>
                                     <!-- LinkedIn -->
-                                    <td style="padding: 0 10px;">
+                                    <td style="padding: 0 15px;">
                                         <a href="https://www.linkedin.com/company/localite-app/" target="_blank">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="32" height="32" alt="LinkedIn" style="display:block;">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="28" height="28" alt="LinkedIn" style="display:block;">
                                         </a>
                                     </td>
                                 </tr>
@@ -135,7 +135,7 @@ module.exports = async (req, res) => {
                     
                     <!-- 3. UNSUBSCRIBE FOOTER -->
                     <tr>
-                        <td align="center" style="padding: 10px 20px 30px 20px; font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #888; background-color: #ffffff;">
+                        <td align="center" style="padding: 15px 20px 30px 20px; font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #888; background-color: #ffffff;">
                             <p style="margin: 0 0 5px 0;">If you no longer wish to receive these emails you can</p>
                             <a href="https://localiteapp.in/api/unsubscribe?email=${email}" style="color: #56684E; text-decoration: underline;">Unsubscribe</a>
                         </td>
